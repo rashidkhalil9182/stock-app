@@ -20,8 +20,7 @@ export class StockPricesItemComponent {
       this.stocksData = val;
       this.negativeGrowth = val.changepercent < 0;
     } else {
-      // Provide a default value or handle undefined case
-      this.stocksData = {} as StockDataModel;  // or handle the empty state as needed
+      this.stocksData = {} as StockDataModel;
       this.negativeGrowth = false;
     }
   }

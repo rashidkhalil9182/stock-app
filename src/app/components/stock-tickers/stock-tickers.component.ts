@@ -14,7 +14,6 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 })
 export class StockTickersComponent {
   stockNames: string[] = ['AAPL', 'GOOG', 'MSFT', 'TSLA'];
-  // stockNames: string[] = ['AAPL'];
   stockData$!: Observable<Record<string, StockDataModel>>;
 
   constructor(
