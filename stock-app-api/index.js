@@ -10,7 +10,8 @@ app.get('/priceUpdates/:id', async (request, response) => {
     const symbol = request.params.id;
     const queryOptions = {};
     const moduleOptions = {};
-
+    const result = await yahooFinance.quoteSummary(symbol, queryOptions, { modules: ['summaryDetail'] });
+    const marketState = result.price.marketState;
     const quoteData = await yahooFinance.quote(symbol, queryOptions, moduleOptions);
     const fields = ["symbol", "displayName", "fiftyTwoWeekLow", "fiftyTwoWeekHigh", "regularMarketDayRange"];
 
@@ -20,8 +21,9 @@ app.get('/priceUpdates/:id', async (request, response) => {
         }
         return acc;
     }, {});
+    
 
-    response.send(quoteData);
+    response.send({...filteredData,...{marketState:marketState}});
 });
 app.listen(PORT, () => {
     console.log("Server Listening on PORT:", PORT);

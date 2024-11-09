@@ -1,0 +1,34 @@
+<div class="stockPricesItem__name">{{ name }}</div>
+<div class="stockPricesItem__price">
+    {{ stocksData.price | price }}
+</div>
+<!-- <div class="stockPricesItem__changes">
+    <div class="stockPricesItem__price">
+        {{ stocksData.dayhigh| price }}
+    </div>
+    <div class="stockPricesItem__price">
+        ({{ stocksData.daylow | price }})
+    </div>
+</div> -->
+<div class="stockPricesItem__trade">
+    <div class="stockPricesItem__tradeLabel">Day high</div>
+    <div class="stockPricesItem__tradePrice">{{ stocksData.dayhigh | price }}</div>
+</div>
+<div class="stockPricesItem__trade">
+    <div class="stockPricesItem__tradeLabel">Day low</div>
+    <div class="stockPricesItem__tradePrice">{{ stocksData.daylow | price }}</div>
+</div>
+
+<div class="stockPricesItem__trade mobileHidden">
+    <div class="stockPricesItem__tradeLabel">52 week high price</div>
+    <div class="stockPricesItem__tradePrice">{{ stocksData.fiftyTwoWeekHigh | price }}</div>
+</div>
+<div class="stockPricesItem__trade mobileHidden">
+    <div class="stockPricesItem__tradeLabel">52 week high price</div>
+    <div class="stockPricesItem__tradePrice">{{ stocksData.fiftyTwoWeekLow | price }}</div>
+</div>
+<div class="stockPricesItem__follow">
+    <app-toggle-switch
+        [selected]="!unsubscribed"
+        (onSwitched)="toggle($event)"></app-toggle-switch>
+</div>

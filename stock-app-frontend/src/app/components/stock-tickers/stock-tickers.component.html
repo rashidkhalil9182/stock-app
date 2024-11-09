@@ -1,0 +1,15 @@
+<div class="stockPrices-wrapper">
+    <div class="marketStatus">
+        Market Status:
+        <span [ngClass]="{'open': isMarketOpen, 'closed': !isMarketOpen}">
+            <ng-container *ngIf="isMarketOpen; else closed">Open</ng-container>
+            <ng-template #closed>Closed</ng-template>
+        </span>
+    </div>
+    <div class="stockPrices">
+        <ng-container *ngFor="let stockName of stockNames">
+            <app-stock-prices-item [name]="stockName"
+                [data]="(stockData$ | async)?.[stockName]"></app-stock-prices-item>
+        </ng-container>
+    </div>
+</div>

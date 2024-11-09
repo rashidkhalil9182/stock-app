@@ -1,0 +1,39 @@
+
+.stockPrices-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+    .marketStatus {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #333;
+        text-align: center;
+    }
+    
+    .marketStatus span {
+        padding: 0.2rem 0.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    
+    .marketStatus span.open {
+        color: #4caf50; /* Green color for open status */
+    }
+    
+    .marketStatus span.closed {
+        color: #f44336; /* Red color for closed status */
+    }
+
+    .stockPrices {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        justify-content: space-between;
+    
+        @media screen and (max-width: 600px) {
+            gap: 12px;
+        }
+    }
+}
