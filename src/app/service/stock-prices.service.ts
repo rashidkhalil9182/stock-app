@@ -9,6 +9,7 @@ import { PriceUpdate } from '../model/priceUpdate.model';
     providedIn: 'root'
 })
 export class StockPricesService {
+    webSocketUrl ='wss://streamer.finance.yahoo.com/';
     apibackendUrl = 'https://stock-app-api-olive.vercel.app';
 
     private socket!: WebSocket;
@@ -36,7 +37,7 @@ export class StockPricesService {
 
     // Setup WebSocket connection
     private setupWebSocket(stockSymbols: string[]): void {
-        this.socket = new WebSocket('wss://streamer.finance.yahoo.com/');
+        this.socket = new WebSocket(this.webSocketUrl);
         this.socket.onopen = () => this.subscribeToSymbols(stockSymbols);
         this.socket.onmessage = (event) => this.handleSocketMessage(event);
         this.socket.onerror = (error) => console.error('WebSocket error:', error);
